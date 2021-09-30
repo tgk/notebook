@@ -78,7 +78,7 @@ off = MIDIFunc.noteOff({ |veloc, num, chan, src|
 	theRings.set(\trig, 0);
 });
 
-q = { on.free; off.free; };
+q = { on.free; off.free; theRings.free; };
 )
 
 

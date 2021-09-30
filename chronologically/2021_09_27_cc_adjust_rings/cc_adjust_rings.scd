@@ -1,7 +1,7 @@
 // alternative approach with one rings that is plucked
 (
-SynthDef(\dong, { arg pit = 60, trig = 0, struct = 0.25, bright = 0.5, damp = 0.7, pos = 0.25;
-    Out.ar(0, MiRings.ar(pit: pit, trig: trig, struct: struct, bright: bright, damp: damp, pos: pos, poly: 4, model: 2));
+SynthDef(\dong, { arg pit = 60, t_trig = 0, struct = 0.25, bright = 0.5, damp = 0.7, pos = 0.25;
+    Out.ar(0, MiRings.ar(pit: pit, trig: t_trig, struct: struct, bright: bright, damp: damp, pos: pos, poly: 4, model: 2));
 }).add;
 )
 
@@ -14,11 +14,11 @@ MIDIIn.connectAll;
 r = Synth(\dong);
 
 on = MIDIFunc.noteOn({ |veloc, num, chan, src|
-	r.set(\pit, num, \trig, 1);
+	r.set(\pit, num, \t_trig, 1);
 });
 
 off = MIDIFunc.noteOff({ |veloc, num, chan, src|
-    r.set(\trig, 0);
+//    r.set(\trig, 0);
 });
 
 cc = MIDIFunc.cc({ |val, num, chan, src|
